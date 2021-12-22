@@ -14,14 +14,21 @@ if(leadsFromLocalStorage){
 }
 //console.log(leadsFromLocalStorage)
 //this is the array object is decleared 
-const tabs =[
-    { url : "https://www.linkedin.com/login"}
-]
+// const tabs =[
+//     { url : "https://www.linkedin.com/login"}
+// ]
+//this function is invoked when click to save tabs buttons 
 tabBtn.addEventListener("click", function(){
     //console.log(tabs[0].url); //here we are access the array object values with the help of keys
-    myLeads.push(tabs[0].url);
-    ocalStorage.setItem("myLeads", JSON.stringify(myLeads) );
-    render(myLeads);
+    
+    //this is for grab the url from current tab
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        console.log(tabs)
+        myLeads.push(tabs[0].url);
+        localStorage.setItem("myLeads", JSON.stringify(myLeads) );
+        render(myLeads);
+    });
+    
 })
 
 //
