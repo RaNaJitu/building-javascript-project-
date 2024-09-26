@@ -79,3 +79,5 @@ inputBtn.addEventListener("click", function(){
 //     li.textContent = myLeads[i] //line no 12, for block we can also write like that
 //     ulEl.append(li)
 // }
+let cc = () => 3+5;
+console.log(cc())
